@@ -19,6 +19,14 @@ public class DataStore {
 	private static Bookmark[][] bookmarks = new Bookmark[BOOKMARK_TYPES_COUNT][BOOKMARK_COUNT_PER_TYPE];
 	private static UserBookmark[] userBookmarks = new UserBookmark[TOTAL_USER_COUNT * USER_BOOKMARK_LIMIT];
 
+	public static User[] getUsers() {
+		return users;
+	}
+
+	public static Bookmark[][] getBookmarks() {
+		return bookmarks;
+	}
+
 	public static void loadData() {
 		loadUsers();
 		loadMovies();
