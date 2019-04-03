@@ -1,5 +1,6 @@
 package com.udemy.thrillio;
 
+import com.udemy.thrillio.constants.BookGenre;
 import com.udemy.thrillio.constants.Gender;
 import com.udemy.thrillio.constants.MovieGenre;
 import com.udemy.thrillio.constants.UserType;
@@ -28,6 +29,17 @@ public class DataStore {
 
 	private static void loadBooks() {
 		// TODO Auto-generated method stub
+		bookmarks[2][0] = BookmarkManager.getInstance().createBook(4000, "Walden", 1854, "Wilder Publications",
+				new String[] { "Henry David Thoreau" }, BookGenre.PHILOSOPHY, 4.3);
+		bookmarks[2][1] = BookmarkManager.getInstance().createBook(4001, "Self-Reliance and Other Essays", 1993,
+				"Dover Publications", new String[] { "Ralph Waldo Emerson" }, BookGenre.PHILOSOPHY, 4.5);
+		bookmarks[2][2] = BookmarkManager.getInstance().createBook(4002, "Light From Many Lamps", 1988, "Touchstone",
+				new String[] { "Lillian Eichler Watson" }, BookGenre.PHILOSOPHY, 5.0);
+		bookmarks[2][3] = BookmarkManager.getInstance().createBook(4003, "Head First Design Patterns", 2004,
+				"O'Reilly Media", new String[] { "Eric Freeman", "Bert Bates", "Kathy Sierra", "Elisabeth Robson" },
+				BookGenre.TECHNICAL, 4.5);
+		bookmarks[2][4] = BookmarkManager.getInstance().createBook(4004, "Effective Java Programming Language Guide",
+				2007, "Prentice Hall", new String[] { "Joshua Bloch" }, BookGenre.TECHNICAL, 4.9);
 
 	}
 
@@ -59,9 +71,20 @@ public class DataStore {
 	}
 
 	private static void loadMovies() {
-//		// TODO Auto-generated method stub
-//		bookmarks[1][0] = BookmarkManager.getInstance().createBook(3000,	"Citizen Kane",	1941,	new String[]{"Orson Welles","Joseph Cotten"},	"Orson Welles",	MovieGenre.CLASSICS);
-
+		// TODO Auto-generated method stub
+		bookmarks[1][0] = BookmarkManager.getInstance().createMovie(3000, "Citizen Kane", 1941,
+				new String[] { "Orson Welles" }, new String[] { "Joseph Cotten", "Orson Welles" }, MovieGenre.CLASSICS,
+				8.5);
+		bookmarks[1][1] = BookmarkManager.getInstance().createMovie(3001, "The Grapes of Wrath", 1940,
+				new String[] { "Henry Fonda", "Jane Darwell" }, new String[] { "John Ford" }, MovieGenre.CLASSICS, 8.2);
+		bookmarks[1][2] = BookmarkManager.getInstance().createMovie(3002, "A Touch of Greatness", 2004,
+				new String[] { "Albert Cullum" }, new String[] { "Leslie Sullivan" }, MovieGenre.DOCUMENTARIES, 7.3);
+		bookmarks[1][3] = BookmarkManager.getInstance().createMovie(3003, "The Big Bang Theory", 2007,
+				new String[] { "Kaley Cuoco", "Jim Parsons" }, new String[] { "Chuck Lorre", "Bill Prady" },
+				MovieGenre.TV_SHOWS, 8.7);
+		bookmarks[1][4] = BookmarkManager.getInstance().createMovie(3004, "Ikiru", 1952,
+				new String[] { "Takashi Shimura", "Minoru Chiaki" }, new String[] { "Akira Kurosawa" },
+				MovieGenre.FOREIGN_MOVIES, 8.4);
 	}
 
 	private static void loadUsers() {
