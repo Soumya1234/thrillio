@@ -9,6 +9,11 @@ public class User {
 	private int gender;
 	private String userType;
 	
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", email=" + email + ", password=" + password + ", firstName=" + firstName
+				+ ", lastName=" + lastName + ", gender=" + gender + ", userType=" + userType + "]";
+	}
 	public long getId() {
 		return id;
 	}

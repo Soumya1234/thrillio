@@ -98,8 +98,8 @@ public class DataStore {
 	private static void loadUsers() {
 
 		// TODO Auto-generated method stub users[0] =
-		UserManager.getInstance().createUser(1000, "user0@semanticsquare.com", "test", "John", "M", Gender.MALE,
-				UserType.USER);
+		users[0] = UserManager.getInstance().createUser(1000, "user0@semanticsquare.com", "test", "John", "M",
+				Gender.MALE, UserType.USER);
 		users[1] = UserManager.getInstance().createUser(1001, "user1@semanticsquare.com", "test", "Sam", "M",
 				Gender.MALE, UserType.USER);
 

@@ -8,7 +8,7 @@ import com.udemy.thrillio.entities.WebLink;
 
 public class BookmarkManager {
 	private static BookmarkManager instance;
-	private BookmarkDao dao = new BookmarkDao();
+	private static BookmarkDao dao = new BookmarkDao();
 
 	private BookmarkManager() {
 

@@ -1,11 +1,18 @@
 package com.udemy.thrillio.entities;
 
+import java.util.Arrays;
+
 public class Book extends Bookmark {
 	private int publicationYear;
 	private String publisher;
 	private String[] authors;
 	private String genre;
 	private double amazonRating;
+	@Override
+	public String toString() {
+		return "Book [publicationYear=" + publicationYear + ", publisher=" + publisher + ", authors="
+				+ Arrays.toString(authors) + ", genre=" + genre + ", amazonRating=" + amazonRating + "]";
+	}
 	public int getPublicationYear() {
 		return publicationYear;
 	}
