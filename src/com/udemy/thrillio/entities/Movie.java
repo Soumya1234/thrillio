@@ -54,4 +54,10 @@ public class Movie extends Bookmark {
 	public void setImdbRating(double imdbRating) {
 		this.imdbRating = imdbRating;
 	}
+
+	@Override
+	public boolean isKidFriendlyEligible() {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }

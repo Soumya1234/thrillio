@@ -2,6 +2,8 @@ package com.udemy.thrillio.entities;
 
 import java.util.Arrays;
 
+import com.udemy.thrillio.constants.BookGenre;
+
 public class Book extends Bookmark {
 	private int publicationYear;
 	private String publisher;
@@ -42,6 +44,10 @@ public class Book extends Bookmark {
 	}
 	public void setAmazonRating(double amazonRating) {
 		this.amazonRating = amazonRating;
+	}
+	@Override
+	public boolean isKidFriendlyEligible() {
+		return false;
 	}
 	
 }

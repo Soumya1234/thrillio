@@ -25,4 +25,10 @@ public class WebLink extends Bookmark {
 		this.host = host;
 	}
 
+	@Override
+	public boolean isKidFriendlyEligible() {
+		// TODO Auto-generated method stub
+		return true;
+	}
+
 }
