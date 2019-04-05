@@ -27,7 +27,9 @@ public class WebLink extends Bookmark {
 
 	@Override
 	public boolean isKidFriendlyEligible() {
-		// TODO Auto-generated method stub
+		if(url.contains("porn") || getTitle().contains("porn") || host.contains("adult")) {
+			return false;
+		}
 		return true;
 	}
 

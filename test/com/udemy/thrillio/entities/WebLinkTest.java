@@ -54,7 +54,7 @@ class WebLinkTest {
 		
 	    isKidFriendlyEligible = weblink.isKidFriendlyEligible();
 		
-		assertTrue("For adult in url,but not in host -- isKidFriendlyEligible() method must return false",isKidFriendlyEligible);
+		assertTrue("For adult in title only -- isKidFriendlyEligible() method must return false",isKidFriendlyEligible);
 	}
 
 }

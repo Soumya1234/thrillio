@@ -17,9 +17,9 @@ public class Launch {
 		users = UserManager.getInstance().getUsers();
 		bookmarks = BookmarkManager.getInstance().getBookmarks();
 		
-		System.out.println("Printing data ...");
-		printUserData();
-		printtBookmarkData();
+//		System.out.println("Printing data ...");
+//		printUserData();
+//		printtBookmarkData();
 		
 	}
 
@@ -43,13 +43,13 @@ public class Launch {
 
 	public static void main(String[] args) {
 		loadData();
-		startBookmarking();
+		start();
 	}
 
-	private static void startBookmarking() {
-		System.out.println("\n2. Bookmarking ... ");
+	private static void start() {
+//		System.out.println("\n2. Bookmarking ... ");
 		for(User user : users) {
-			View.bookmark(user, bookmarks);
+			View.browse(user, bookmarks);
 		}
 		
 	}

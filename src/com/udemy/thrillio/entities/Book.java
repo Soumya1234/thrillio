@@ -47,7 +47,10 @@ public class Book extends Bookmark {
 	}
 	@Override
 	public boolean isKidFriendlyEligible() {
-		return false;
+		if(genre.equals(BookGenre.PHILOSOPHY) || genre.equals(BookGenre.SELF_HELP)) {
+			return false;
+		}
+		return true;
 	}
 	
 }

@@ -2,6 +2,8 @@ package com.udemy.thrillio.entities;
 
 import java.util.Arrays;
 
+import com.udemy.thrillio.constants.MovieGenre;
+
 public class Movie extends Bookmark {
 	private int releaseYear;
 	private String[] cast;
@@ -57,7 +59,9 @@ public class Movie extends Bookmark {
 
 	@Override
 	public boolean isKidFriendlyEligible() {
-		// TODO Auto-generated method stub
-		return false;
+		if(genre.equals(MovieGenre.THRILLERS) || genre.equals(MovieGenre.HORROR)) {
+			return false;
+		}
+		return true;
 	}
 }
