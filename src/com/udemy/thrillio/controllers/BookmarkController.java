@@ -21,8 +21,18 @@ public class BookmarkController {
 	}
 
 	public void saveUserBookmark(User user, Bookmark bookmark) {
-		// TODO Auto-generated method stub
+		
 		BookmarkManager.getInstance().saveUserBookmark(user,bookmark);
+	}
+
+	public void setKidFriendlyStatus(User user,String kidFriendlyMarkDecision, Bookmark bookmark) {
+		BookmarkManager.getInstance().setKidFriendlyStatus(user,kidFriendlyMarkDecision,bookmark);
+		
+	}
+
+	public void share(User user, Bookmark bookmark) {
+		
+		BookmarkManager.getInstance().share(user,bookmark);
 	}
 
 }

@@ -63,11 +63,31 @@ public class BookmarkManager {
 	}
 
 	public void saveUserBookmark(User user, Bookmark bookmark) {
-		// TODO Auto-generated method stub
+		
 		UserBookmark userBookmark = new UserBookmark();
 		userBookmark.setUser(user);
 		userBookmark.setBookmark(bookmark);
 		
 		dao.saveUserBookmark(userBookmark);
+	}
+
+	public void setKidFriendlyStatus(User user,String kidFriendlyMarkDecision, Bookmark bookmark) {
+		
+		bookmark.setKidFriendlyStatus(kidFriendlyMarkDecision);
+		bookmark.setKidFriendlyMarkedBy(user);
+		
+		System.out.println("Kid-Friendly Status:" + kidFriendlyMarkDecision+ " marked by "+user.getEmail()+" ,"+bookmark);
+	}
+
+	public void share(User user, Bookmark bookmark) {
+		
+		bookmark.setSharedBy(user);
+		System.out.println("Data to be shared: ");
+		if(bookmark instanceof Book) {
+			System.out.println(((Book) bookmark).getItemData());
+		}
+		else if(bookmark instanceof WebLink) {
+			System.out.println(((WebLink) bookmark).getItemData());
+		}
 	}
 }

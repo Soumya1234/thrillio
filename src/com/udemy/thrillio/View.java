@@ -5,6 +5,7 @@ import com.udemy.thrillio.constants.UserType;
 import com.udemy.thrillio.controllers.BookmarkController;
 import com.udemy.thrillio.entities.Bookmark;
 import com.udemy.thrillio.entities.User;
+import com.udemy.thrillio.partner.Shareable;
 
 public class View {
 	public static void browse(User user, Bookmark[][] bookmarks) {
@@ -20,20 +21,36 @@ public class View {
 						System.out.println("New Item Bookmarked -- " + bookmark);
 					}
 				}
-				// Mark as kid Friendly
+				
 				if (user.getUserType().equals(UserType.EDITOR) || user.getUserType().equals(UserType.CHIEF_EDITOR)) {
+					
+					// Mark as kid Friendly
 					if (bookmark.isKidFriendlyEligible()
 							&& bookmark.getKidFriendlyStatus().equals(KidFriendlyStatus.UNKNOWN)) {
 						String kidFriendlyMarkDecision = getKidFriendlyMarkDecision(bookmark);
 						if(!kidFriendlyMarkDecision.equals(KidFriendlyStatus.UNKNOWN)) {
-							bookmark.setKidFriendlyStatus(kidFriendlyMarkDecision);
-							System.out.println("Kid-Friendly Status:" + kidFriendlyMarkDecision+" ,"+bookmark);
+							BookmarkController.getInstance().setKidFriendlyStatus(user,kidFriendlyMarkDecision,bookmark);
+							
+						}
+					}
+					
+					//Share a bookmark
+					if((bookmark.getKidFriendlyStatus().equals(KidFriendlyStatus.APPROVED)) && bookmark instanceof Shareable) {
+						boolean isShared = getShareDecision();
+						if(isShared) {
+							BookmarkController.getInstance().share(user,bookmark);
 						}
 					}
 				}
 			}
 		}
 
+	}
+
+	// TODO: following methods simulate user input. After IO we will take input via console
+	private static boolean getShareDecision() {
+		return Math.random() < 0.5 ? true : false;
+		
 	}
 
 	private static String getKidFriendlyMarkDecision(Bookmark bookmark) {

@@ -24,7 +24,7 @@ public class Launch {
 	}
 
 	private static void printtBookmarkData() {
-		// TODO Auto-generated method stub
+		
 		for(Bookmark[] bookmarkRow: bookmarks) {
 			for(Bookmark bookmark : bookmarkRow) {
 				System.out.println(bookmark);

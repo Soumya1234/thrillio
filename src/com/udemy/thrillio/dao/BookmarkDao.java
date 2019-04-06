@@ -10,7 +10,7 @@ public class BookmarkDao {
 	}
 
 	public void saveUserBookmark(UserBookmark userBookmark) {
-		// TODO Auto-generated method stub
+		
 		DataStore.add(userBookmark);
 	}
 }

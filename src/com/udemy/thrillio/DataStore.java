@@ -33,11 +33,11 @@ public class DataStore {
 		loadMovies();
 		loadWebLinks();
 		loadBooks();
-		loadUserBookmarks();
+		
 	}
 
 	private static void loadBooks() {
-		// TODO Auto-generated method stub
+		
 		bookmarks[2][0] = BookmarkManager.getInstance().createBook(4000, "Walden", 1854, "Wilder Publications",
 				new String[] { "Henry David Thoreau" }, BookGenre.PHILOSOPHY, 4.3);
 		bookmarks[2][1] = BookmarkManager.getInstance().createBook(4001, "Self-Reliance and Other Essays", 1993,
@@ -53,7 +53,7 @@ public class DataStore {
 	}
 
 	private static void loadWebLinks() {
-		// TODO Auto-generated method stub
+		
 		bookmarks[0][0] = BookmarkManager.getInstance().createWebLink(2000, "Taming Tiger, Part 2",
 				"http://www.javaworld.com/article/2072759/core-java/taming-tiger--part-2.html",
 				"http://www.javaworld.com");
@@ -74,13 +74,9 @@ public class DataStore {
 
 	}
 
-	private static void loadUserBookmarks() {
-		// TODO Auto-generated method stub
-
-	}
 
 	private static void loadMovies() {
-		// TODO Auto-generated method stub
+		
 		bookmarks[1][0] = BookmarkManager.getInstance().createMovie(3000, "Citizen Kane", 1941,
 				new String[] { "Orson Welles" }, new String[] { "Joseph Cotten", "Orson Welles" }, MovieGenre.CLASSICS,
 				8.5);
@@ -98,7 +94,7 @@ public class DataStore {
 
 	private static void loadUsers() {
 
-		// TODO Auto-generated method stub users[0] =
+		
 		users[0] = UserManager.getInstance().createUser(1000, "user0@semanticsquare.com", "test", "John", "M",
 				Gender.MALE, UserType.USER);
 		users[1] = UserManager.getInstance().createUser(1001, "user1@semanticsquare.com", "test", "Sam", "M",
@@ -116,7 +112,7 @@ public class DataStore {
 	}
 
 	public static void add(UserBookmark userBookmark) {
-		// TODO Auto-generated method stub
+		
 		userBookmarks[bookmarkIndex] = userBookmark;
 		bookmarkIndex++;
 	}
