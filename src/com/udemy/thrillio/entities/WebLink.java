@@ -1,6 +1,8 @@
 package com.udemy.thrillio.entities;
 
-public class WebLink extends Bookmark {
+import com.udemy.thrillio.partner.Shareable;
+
+public class WebLink extends Bookmark implements Shareable {
 	private String url;
 	private String host;
 
@@ -31,6 +33,12 @@ public class WebLink extends Bookmark {
 			return false;
 		}
 		return true;
+	}
+
+	@Override
+	public String getItemData() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
