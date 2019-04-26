@@ -1,5 +1,8 @@
 package com.udemy.thrillio.managers;
 
+import java.net.MalformedURLException;
+import java.net.URISyntaxException;
+
 import com.udemy.thrillio.dao.BookmarkDao;
 import com.udemy.thrillio.entities.Book;
 import com.udemy.thrillio.entities.Bookmark;
@@ -7,6 +10,8 @@ import com.udemy.thrillio.entities.Movie;
 import com.udemy.thrillio.entities.User;
 import com.udemy.thrillio.entities.UserBookmark;
 import com.udemy.thrillio.entities.WebLink;
+import com.udemy.thrillio.util.HttpConnect;
+import com.udemy.thrillio.util.IOUtil;
 
 public class BookmarkManager {
 	private static BookmarkManager instance;
@@ -67,6 +72,24 @@ public class BookmarkManager {
 		UserBookmark userBookmark = new UserBookmark();
 		userBookmark.setUser(user);
 		userBookmark.setBookmark(bookmark);
+		
+		//Adding ability to download and save WebLinks as .html pages locally
+		if(bookmark instanceof WebLink) {
+			try {
+				String url = ((WebLink)bookmark).getUrl();
+				if(!url.endsWith(".pdf")) {
+					String webpage = HttpConnect.download(url);
+					if(webpage != null) {
+						IOUtil.write(webpage,bookmark.getId());
+					}
+				}
+			} catch (MalformedURLException e) {
+				e.printStackTrace();
+			} catch (URISyntaxException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 		
 		dao.saveUserBookmark(userBookmark);
 	}

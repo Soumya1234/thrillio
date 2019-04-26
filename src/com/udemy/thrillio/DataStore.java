@@ -3,12 +3,13 @@ package com.udemy.thrillio;
 import com.udemy.thrillio.constants.BookGenre;
 import com.udemy.thrillio.constants.Gender;
 import com.udemy.thrillio.constants.MovieGenre;
-import com.udemy.thrillio.constants.UserType;
 import com.udemy.thrillio.entities.Bookmark;
 import com.udemy.thrillio.entities.User;
 import com.udemy.thrillio.entities.UserBookmark;
 import com.udemy.thrillio.managers.BookmarkManager;
 import com.udemy.thrillio.managers.UserManager;
+import com.udemy.thrillio.util.IOUtil;
+
 import com.udemy.thrillio.util.IOUtil;
 
 public class DataStore {
@@ -63,47 +64,8 @@ public class DataStore {
 		for (String row : book_data) {
 			String[] values = row.split("\t");
 			String[] authors = values[4].split(",");
-			String genre = null;
-			switch (values[5]) {
-			case "art":
-				genre = BookGenre.ART;
-				break;
-			case "biography":
-				genre = BookGenre.BIOGRAPHY;
-				break;
-			case "children":
-				genre = BookGenre.CHILDREN;
-				break;
-			case "fiction":
-				genre = BookGenre.FICTION;
-				break;
-			case "history":
-				genre = BookGenre.HISTORY;
-				break;
-			case "mystery":
-				genre = BookGenre.MYSTERY;
-				break;
-			case "philosophy":
-				genre = BookGenre.PHILOSOPHY;
-				break;
-			case "religion":
-				genre = BookGenre.RELIGION;
-				break;
-			case "romance":
-				genre = BookGenre.ROMANCE;
-				break;
-			case "self_help":
-				genre = BookGenre.SELF_HELP;
-				break;
-			case "technical":
-				genre = BookGenre.TECHNICAL;
-				break;
-			default:
-				genre = "Illegal Genre";
-			}
-
 			bookmarks[2][book_count++] = BookmarkManager.getInstance().createBook(Long.parseLong(values[0]), values[1],
-					Integer.parseInt(values[2]), values[3], authors, genre, Double.parseDouble(values[6]));
+					Integer.parseInt(values[2]), values[3], authors, values[5], Double.parseDouble(values[6]));
 
 		}
 
@@ -139,23 +101,48 @@ public class DataStore {
 		 * "http://tomcat.apache.org");
 		 */
 
+		String[] weblink_data = new String[BOOKMARK_COUNT_PER_TYPE];
+		int weblink_count = 0;
+		IOUtil.read(weblink_data, "Web-Link.txt");
+		for (String row : weblink_data) {
+			String[] values = row.split("\t");
+			bookmarks[0][weblink_count++] = BookmarkManager.getInstance().createWebLink(Long.parseLong(values[0]),
+					values[1], values[2], values[3]);
+		}
+
 	}
 
 	private static void loadMovies() {
 
-		bookmarks[1][0] = BookmarkManager.getInstance().createMovie(3000, "Citizen Kane", 1941,
-				new String[] { "Orson Welles" }, new String[] { "Joseph Cotten", "Orson Welles" }, MovieGenre.CLASSICS,
-				8.5);
-		bookmarks[1][1] = BookmarkManager.getInstance().createMovie(3001, "The Grapes of Wrath", 1940,
-				new String[] { "Henry Fonda", "Jane Darwell" }, new String[] { "John Ford" }, MovieGenre.CLASSICS, 8.2);
-		bookmarks[1][2] = BookmarkManager.getInstance().createMovie(3002, "A Touch of Greatness", 2004,
-				new String[] { "Albert Cullum" }, new String[] { "Leslie Sullivan" }, MovieGenre.DOCUMENTARIES, 7.3);
-		bookmarks[1][3] = BookmarkManager.getInstance().createMovie(3003, "The Big Bang Theory", 2007,
-				new String[] { "Kaley Cuoco", "Jim Parsons" }, new String[] { "Chuck Lorre", "Bill Prady" },
-				MovieGenre.TV_SHOWS, 8.7);
-		bookmarks[1][4] = BookmarkManager.getInstance().createMovie(3004, "Ikiru", 1952,
-				new String[] { "Takashi Shimura", "Minoru Chiaki" }, new String[] { "Akira Kurosawa" },
-				MovieGenre.FOREIGN_MOVIES, 8.4);
+		/*
+		 * bookmarks[1][0] = BookmarkManager.getInstance().createMovie(3000,
+		 * "Citizen Kane", 1941, new String[] { "Orson Welles" }, new String[] {
+		 * "Joseph Cotten", "Orson Welles" }, MovieGenre.CLASSICS, 8.5); bookmarks[1][1]
+		 * = BookmarkManager.getInstance().createMovie(3001, "The Grapes of Wrath",
+		 * 1940, new String[] { "Henry Fonda", "Jane Darwell" }, new String[] {
+		 * "John Ford" }, MovieGenre.CLASSICS, 8.2); bookmarks[1][2] =
+		 * BookmarkManager.getInstance().createMovie(3002, "A Touch of Greatness", 2004,
+		 * new String[] { "Albert Cullum" }, new String[] { "Leslie Sullivan" },
+		 * MovieGenre.DOCUMENTARIES, 7.3); bookmarks[1][3] =
+		 * BookmarkManager.getInstance().createMovie(3003, "The Big Bang Theory", 2007,
+		 * new String[] { "Kaley Cuoco", "Jim Parsons" }, new String[] { "Chuck Lorre",
+		 * "Bill Prady" }, MovieGenre.TV_SHOWS, 8.7); bookmarks[1][4] =
+		 * BookmarkManager.getInstance().createMovie(3004, "Ikiru", 1952, new String[] {
+		 * "Takashi Shimura", "Minoru Chiaki" }, new String[] { "Akira Kurosawa" },
+		 * MovieGenre.FOREIGN_MOVIES, 8.4);
+		 * 
+		 */
+		String[] movie_data = new String[BOOKMARK_COUNT_PER_TYPE];
+		int movie_count = 0;
+		IOUtil.read(movie_data, "Movie.txt");
+		for (String row : movie_data) {
+			String[] values = row.split("\t");
+			String[] cast = values[3].split(",");
+			String[] directors = values[4].split(",");
+			
+			bookmarks[1][movie_count++] = BookmarkManager.getInstance().createMovie(Long.parseLong(values[0]),
+					values[1],Integer.parseInt(values[2]),cast,directors,values[5],Double.parseDouble(values[6]));
+		}
 	}
 
 	private static void loadUsers() {
