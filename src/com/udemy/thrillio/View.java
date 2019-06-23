@@ -27,7 +27,7 @@ public class View {
 					// Mark as kid Friendly
 					if (bookmark.isKidFriendlyEligible()
 							&& bookmark.getKidFriendlyStatus().equals(KidFriendlyStatus.UNKNOWN)) {
-						String kidFriendlyMarkDecision = getKidFriendlyMarkDecision(bookmark);
+						KidFriendlyStatus kidFriendlyMarkDecision = getKidFriendlyMarkDecision(bookmark);
 						if(!kidFriendlyMarkDecision.equals(KidFriendlyStatus.UNKNOWN)) {
 							BookmarkController.getInstance().setKidFriendlyStatus(user,kidFriendlyMarkDecision,bookmark);
 							
@@ -53,7 +53,7 @@ public class View {
 		
 	}
 
-	private static String getKidFriendlyMarkDecision(Bookmark bookmark) {
+	private static KidFriendlyStatus getKidFriendlyMarkDecision(Bookmark bookmark) {
 		double value = Math.random();
 		return value < 0.4 ? KidFriendlyStatus.APPROVED
 				: (value >= 0.4 && value < 0.8 ? KidFriendlyStatus.REJECTED : KidFriendlyStatus.UNKNOWN);

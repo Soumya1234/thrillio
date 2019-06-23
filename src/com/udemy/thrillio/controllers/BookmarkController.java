@@ -1,5 +1,6 @@
 package com.udemy.thrillio.controllers;
 
+import com.udemy.thrillio.constants.KidFriendlyStatus;
 import com.udemy.thrillio.entities.Bookmark;
 import com.udemy.thrillio.entities.User;
 import com.udemy.thrillio.managers.BookmarkManager;
@@ -25,7 +26,7 @@ public class BookmarkController {
 		BookmarkManager.getInstance().saveUserBookmark(user,bookmark);
 	}
 
-	public void setKidFriendlyStatus(User user,String kidFriendlyMarkDecision, Bookmark bookmark) {
+	public void setKidFriendlyStatus(User user,KidFriendlyStatus kidFriendlyMarkDecision, Bookmark bookmark) {
 		BookmarkManager.getInstance().setKidFriendlyStatus(user,kidFriendlyMarkDecision,bookmark);
 		
 	}

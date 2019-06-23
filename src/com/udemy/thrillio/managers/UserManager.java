@@ -1,5 +1,6 @@
 package com.udemy.thrillio.managers;
 
+import com.udemy.thrillio.constants.Gender;
 import com.udemy.thrillio.dao.UserDao;
 import com.udemy.thrillio.entities.User;
 
@@ -22,7 +23,7 @@ public class UserManager {
 		return instance;
 	}
 
-	public User createUser(long id, String email, String password, String firstName, String lastName, int gender,
+	public User createUser(long id, String email, String password, String firstName, String lastName, Gender gender,
 			String userType) {
 		User user = new User();
 		user.setId(id);

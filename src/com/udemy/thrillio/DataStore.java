@@ -65,7 +65,7 @@ public class DataStore {
 			String[] values = row.split("\t");
 			String[] authors = values[4].split(",");
 			bookmarks[2][book_count++] = BookmarkManager.getInstance().createBook(Long.parseLong(values[0]), values[1],
-					Integer.parseInt(values[2]), values[3], authors, values[5], Double.parseDouble(values[6]));
+					Integer.parseInt(values[2]), values[3], authors, BookGenre.valueOf(values[5].replaceAll(" ", "_").toUpperCase()), Double.parseDouble(values[6]));
 
 		}
 
@@ -141,7 +141,7 @@ public class DataStore {
 			String[] directors = values[4].split(",");
 			
 			bookmarks[1][movie_count++] = BookmarkManager.getInstance().createMovie(Long.parseLong(values[0]),
-					values[1],Integer.parseInt(values[2]),cast,directors,values[5],Double.parseDouble(values[6]));
+					values[1],Integer.parseInt(values[2]),cast,directors,MovieGenre.valueOf(values[5].replaceAll(" ","_").toUpperCase()),Double.parseDouble(values[6]));
 		}
 	}
 
@@ -171,7 +171,7 @@ public class DataStore {
 		int user_count = 0;
 		for (String row : data) {
 			String[] user_values = row.split("\t");
-			int gender = Gender.MALE;
+			Gender gender = Gender.MALE;
 			if (user_values[5].equals("f"))
 				gender = Gender.FEMALE;
 			else if (user_values[5].equals("t"))

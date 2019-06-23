@@ -3,6 +3,9 @@ package com.udemy.thrillio.managers;
 import java.net.MalformedURLException;
 import java.net.URISyntaxException;
 
+import com.udemy.thrillio.constants.BookGenre;
+import com.udemy.thrillio.constants.KidFriendlyStatus;
+import com.udemy.thrillio.constants.MovieGenre;
 import com.udemy.thrillio.dao.BookmarkDao;
 import com.udemy.thrillio.entities.Book;
 import com.udemy.thrillio.entities.Bookmark;
@@ -28,7 +31,7 @@ public class BookmarkManager {
 		return instance;
 	}
 
-	public Movie createMovie(long id, String title, int releaseYear, String[] cast, String[] directors, String genre,
+	public Movie createMovie(long id, String title, int releaseYear, String[] cast, String[] directors, MovieGenre genre,
 			double imdbRating) {
 		Movie movie = new Movie();
 		movie.setId(id);
@@ -41,7 +44,7 @@ public class BookmarkManager {
 		return movie;
 	}
 
-	public Book createBook(long id, String title, int publicationYear, String publisher, String[] authors, String genre,
+	public Book createBook(long id, String title, int publicationYear, String publisher, String[] authors, BookGenre genre,
 			double amazonRating) {
 		Book book = new Book();
 		book.setId(id);
@@ -94,7 +97,7 @@ public class BookmarkManager {
 		dao.saveUserBookmark(userBookmark);
 	}
 
-	public void setKidFriendlyStatus(User user,String kidFriendlyMarkDecision, Bookmark bookmark) {
+	public void setKidFriendlyStatus(User user,KidFriendlyStatus kidFriendlyMarkDecision, Bookmark bookmark) {
 		
 		bookmark.setKidFriendlyStatus(kidFriendlyMarkDecision);
 		bookmark.setKidFriendlyMarkedBy(user);

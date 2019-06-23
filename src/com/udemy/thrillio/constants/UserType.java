@@ -1,14 +1,17 @@
 package com.udemy.thrillio.constants;
 
-public class UserType {
-	
-	public static final String USER = "user";
-	public static final String EDITOR = "editor";
-	public static final String CHIEF_EDITOR = "chiefeditor";
-	
-	private UserType() {
-		
+public enum UserType {
+
+	USER("user"), EDITOR("editor"), CHIEF_EDITOR("chiefeditor");
+
+	private String string;
+
+	private UserType(String string) {
+		this.string = string;
 	}
-	
-	
+
+	public String getString() {
+		return string;
+	}
+
 }
